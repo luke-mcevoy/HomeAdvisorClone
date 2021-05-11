@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="pro"
+            type="com.mcevoy.mcevoy_homeadvisor.model.ProData" />
+        <variable
+            name="detailViewModel"
+            type="com.mcevoy.mcevoy_homeadvisor.viewmodel.DetailViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.DetailFragment">
+
+        <TextView
+            style="@style/Header"
+            android:id="@+id/companyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:text="@{pro.companyName}"/>
+
+        <TextView
+            android:id="@+id/specialty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/companyName"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:text="@{pro.specialty}"/>
+
+        <TextView
+            android:id="@+id/ratingCount"
+            style="@style/Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/specialty"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:text="@{`Rating: ` + pro.compositeRating + ` | ` + pro.ratingCount + ` rating(s)`}"/>
+
+        <TextView
+            android:id="@+id/primaryLocation"
+            style="@style/Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ratingCount"
+            android:layout_centerHorizontal="false"
+            android:layout_margin="4dp"
+            android:paddingLeft="10dp"
+            android:text="@{pro.primaryLocation}" />
+
+        <TextView
+            android:id="@+id/servicesOffered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/primaryLocation"
+            android:layout_centerHorizontal="false"
+            android:layout_margin="4dp"
+            android:paddingLeft="10dp"
+            android:text="@{pro.servicesOffered}" />
+
+        <TextView
+            android:id="@+id/companyOverview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/servicesOffered"
+            android:layout_centerHorizontal="false"
+            android:layout_margin="4dp"
+            android:paddingLeft="10dp"
+            android:text="@{pro.companyOverview}" />
+
+        <Button
+            android:id="@+id/call"
+            android:background="#F7901E"
+            android:textColor="#FFFFFF"
+            android:layout_width="175dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:onClick="@{() -> detailViewModel.displayPhoneEmail(pro.phoneNumber)}"
+            android:text="@{pro.phoneNumber}"
+            />
+
+        <Button
+            android:id="@+id/email"
+            android:background="#F7901E"
+            android:textColor="#FFFFFF"
+            android:layout_width="175dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:onClick="@{() -> detailViewModel.displayPhoneEmail(pro.email)}"
+            android:text="@{pro.email}"
+            />
+
+
+    </RelativeLayout>
+
+
+</layout>
